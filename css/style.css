@@ -294,21 +294,45 @@ h1, h2, h3, h4, h5, h6, figure {
   -o-transform: scale(1.2);
   transform: scale(1.2);
 }
-
 .full-width-img {
-  background: url('/appu/images/WhatsApp\ Image\ 2024-12-31\ at\ 11.07.25_714d4e37.jpg') no-repeat center center;
-  background-size: cover;
+  position: relative;
   text-align: center;
   padding-top: 100px;
   height: 450px;
   color: #fff;
+  overflow: hidden; /* Ensures the pseudo-element stays within bounds */
 }
+
+.full-width-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/appu/images/WhatsApp\ Image\ 2024-12-31\ at\ 11.07.25_714d4e37.jpg') no-repeat center center;
+  background-size: cover;
+  filter: blur(5px); /* Adds the blur effect */
+  z-index: 1; /* Places the pseudo-element behind the content */
+}
+
+.full-width-img .box {
+  position: relative;
+  z-index: 2; /* Ensures the content appears above the blurred background */
+}
+
+.countdown-timer {
+  color: #fff; /* Style the timer as needed */
+}
+
+
 
 .box {
   color: #fff;
   text-align: center;
   margin-top: 50px;
   padding: 10px 20px;
+  position: relative; /* Ensures the box stays above the background */
 }
 
 .subheading-text {
